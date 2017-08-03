@@ -3,22 +3,14 @@ package stepDefinitions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.gargoylesoftware.htmlunit.javascript.host.Iterator;
-
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import pageObjects.HomePage;
@@ -107,11 +99,7 @@ public class TestSteps {
 	}
 	@Then("^he should be redirected to search results page$")
 	public void he_should_be_redirected_to_search_results_page() throws Throwable {
-		/*driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	WebElement searchDropdown= SearchPage.getSearchDropdown(driver);
-	 WebElement restaurantList =SearchPage.getRestaurantList(driver);*/
-		
-	 WebDriverWait wait = new WebDriverWait(driver, 300);
+	WebDriverWait wait = new WebDriverWait(driver, 300);
 	WebElement restaurantList = wait.until(ExpectedConditions.visibilityOf(SearchPage.getRestaurantList(driver)));
 	WebElement searchDropdown = wait.until(ExpectedConditions.visibilityOf(SearchPage.getSearchDropdown(driver)));
 	    Assert.assertTrue(searchDropdown.isDisplayed());
